@@ -8,22 +8,17 @@ Return "100".
 */
 
 string addBinary(string a, string b) {
-    int L = max(a.length(), b.length());
     string out = "";
-    int carry = 0;
+    int carry = 0, pA = a.length()-1, pB = b.length()-1;
 
-    for (int i = 0; i < L; i++) {
-    	// Tricky part
-        int aInt = a.length() > i ? a[a.length()-i-1]-'0' : 0;
-        int bInt = b.length() > i ? b[b.length()-i-1]-'0' : 0;
+    while (pA >= 0 || pB >= 0 || carry > 0) {
+    	int aVal = (pA >= 0) ? a[pA]-'0' : 0;
+    	int bVal = (pB >= 0) ? b[pB]-'0' : 0;
 
-        int sum = aInt + bInt + carry;
-        carry = sum/2;
-        out.insert(out.begin(), sum % 2 + '0'); // user "insert", instead of +=
-    }
-
-    if (carry > 0) {
-        out.insert(out.begin(), '1');
+    	int sum = aVal + bVal + carry;
+    	carry = sum/2;
+    	out.insert(out.begin(), sum%2 +'0');
+    	pA--; pB--;
     }
 
     return out;
