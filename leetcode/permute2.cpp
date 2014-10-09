@@ -26,13 +26,14 @@ void getPermuteUnique(vector<vector<int> >&res, vector<int> &sol, vector<int> &n
 
 	for (int i = 0; i < num.size(); i++) {
 		if (visited[i] == false) {
-			if (i > 0 && num[i] == num[i-1] && visited[i-1] == false)   // the only difference here
-		        continue;                                               // these 2 lines.
+			// if (i > 0 && num[i] == num[i-1] && visited[i-1] == false)   // the only difference here
+		    //    continue;                                                // are these 2 lines.
 			visited[i] = true;
 			sol.push_back(num[i]);
 			getPermute(res, sol, num, visited, level+1);
 			sol.pop_back();
 			visited[i] = false;
+			while (num[i] == num[i+1] && i < num.size()-1) {i++;}
 		}
 	}
 }

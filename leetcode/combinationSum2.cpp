@@ -32,7 +32,7 @@ void getCombinationSum(vector<vector<int> >&res, vector<int> &sol, vector<int> &
 	for (int i = start; i < num.size(); i++) {
 		if (num[i] <= sum) {
 			sol.push_back(num[i]);
-			getCombinationSum(res, sol, num, sum - num[i], i+1);
+			getCombinationSum(res, sol, num, sum - num[i], i+1);  // i+1: because each number can only used once
 			sol.pop_back();
 			while (num[i] == num[i+1] && i <num.size()-1) { i++; }
 		}

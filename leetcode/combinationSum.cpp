@@ -30,7 +30,7 @@ void getCombinationSum(vector<vector<int> >&res, vector<int> &sol, vector<int> &
 	for (int i = start; i < candidates.size(); i++) {
 		if (candidates[i] <= sum) {
 			sol.push_back(candidates[i]);
-			getCombinationSum(res, sol, candidates, sum - candidates[i], i);
+			getCombinationSum(res, sol, candidates, sum - candidates[i], i);  // it's i, not i+1
 			sol.pop_back();
 		}
 	}
