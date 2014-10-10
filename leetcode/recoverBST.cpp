@@ -13,15 +13,13 @@ void recoverTree(TreeNode *root) {
 
 void inOrderTraverse(TreeNode *node, TreeNode* &prev, TreeNode* &n1, TreeNode* &n2) {
     if (node == NULL) return;
-    
-    inOrderTraverse(node->left, prev);
-    
+    inOrderTraverse(node->left, prev, n1, n2);
+
     if (prev && prev->val >=node->val) {
         n2 = node;             // remember!
         if (!n1) n1 = prev;    // remember!
     } else {
         prev = node;
     } 
-    
-    inOrderTraverse(node->right, prev);
+    inOrderTraverse(node->right, prev, n1, n2);
 }
