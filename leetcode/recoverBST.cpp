@@ -15,7 +15,7 @@ void inOrderTraverse(TreeNode *node, TreeNode* &prev, TreeNode* &n1, TreeNode* &
     if (node == NULL) return;
     inOrderTraverse(node->left, prev, n1, n2);
 
-    if (prev && prev->val >=node->val) {
+    if (prev && prev->val >= node->val) {
         n2 = node;             // remember!
         if (!n1) n1 = prev;    // remember!
     } else {

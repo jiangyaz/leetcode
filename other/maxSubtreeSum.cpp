@@ -9,8 +9,7 @@ int maxSubtreeSum(TreeNode *root) {
 }
 
 int maxPathAcrossRoot(TreeNode *node, int &maxGlobal) {
-	if (node == NULL) 
-		return 0;
+	if (node == NULL) return 0;
 
 	int leftMax = maxPathAcrossRoot(node->left);
 	int rightMax = maxPathAcrossRoot(node->right);
@@ -19,5 +18,6 @@ int maxPathAcrossRoot(TreeNode *node, int &maxGlobal) {
 	int curSum = node->val + leftMax + rightMax;
 	maxGlobal = max(maxGlobal, curSum);
 
+	// pass node+left or node+right to parent
 	return max(leftMax, rightMax) + node->val;
 }
