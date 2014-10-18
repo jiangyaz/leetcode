@@ -16,21 +16,18 @@ Return 6.
 int maxPathSum(TreeNode *root) {
 	int maxGlobalSum = INT_MIN;
 	int maxSumEndAtRoot = maxPathSum(root, maxGlobalSum);
-	return max(maxGlobalSum, maxSumEndAtRoot);        
+	return maxGlobalSum;        
 }
 
 int maxPathSum(TreeNode *node, int &maxGlobalSum) {
-	if (node == NULL) 
-		return 0;
+	if (node == NULL) return 0;
 
 	int leftMax = maxPathSum(node->left, maxGlobalSum);
 	int rightMax = maxPathSum(node->right, maxGlobalSum);
 	
 	int curSum = node->val;
-	if (leftMax > 0)
-		curSum += leftMax;
-	if (rightMax > 0) 
-		curSum += rightMax;
+	if (leftMax > 0) curSum += leftMax;
+	if (rightMax > 0) curSum += rightMax;
 
 	maxGlobalSum = max(maxGlobalSum, curSum);
 
