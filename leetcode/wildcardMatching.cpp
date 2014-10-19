@@ -21,25 +21,24 @@ isMatch("aab", "c*a*b") → false
 */
 
 bool isMatch(const char *s, const char *p) {
-	if (*p == '\0') return *s =='\0';
-	const char *ss;
-	const char *mark;
+	const char *ss = s, *pp = NULL;
 	while (*s != '\0') {
 		if (*s == *p || *p == '?') {
 			s++; p++;
 			continue;
 		}
 		if (*p == '*') {
-			mark = p+1;
-			ss = s;
+			pp = ++p;
+			ss = s+1;
 			continue;
 		}
-		if (mark) {
-			p = mark;
-			s = ++ss;
+		if (pp) {
+			p = pp;
+			s = ss++;
 			continue; 
 		}
 		return false;
 	}
-	return true;
+	while (*p == '*') p++;
+	return *p == '\0';
 }
