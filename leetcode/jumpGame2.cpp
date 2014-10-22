@@ -13,17 +13,14 @@ to the last index.)
 */
 
 int jump(int A[], int n) {
-    if (n <= 1) return 0;
-    int curMax = 0, nextMax = 0, curIndex = 0, step = 1;
-
-    while (curIndex < n) {
-    	while (curIndex <= curMax) {
-		    nextMax = max(nextMax, curIndex + A[curIndex]);
-		    if (nextMax >= n - 1) return step;
-		    curIndex++;
-	    }
-	    step++;
-	    curMax = nextMax;
-    }   
-    return step;
+    int curMax = 0, nextMax = 0, index = 0, step = 0;
+    while (index <= curMax) {
+        if (curMax >= n-1) return step;
+        nextMax = max(nextMax, index+A[index]);
+        if (index == curMax) {
+            step++;
+            curMax = nextMax; 
+        }
+        index++;
+    }
 }
