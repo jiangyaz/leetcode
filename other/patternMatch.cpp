@@ -1,3 +1,4 @@
+
 void tokenize(string str, vector<string> &tokens) {
     int index = 0;
     while (index < str.length()) {
@@ -25,8 +26,9 @@ bool patternMatch1(string p, string s) {
     tokenize(s, sToken);
 
     // First check if size is the same
-    if (pToken.size() != sToken.size()) 
+    if (pToken.size() != sToken.size()) {
         return false;
+    }
 
     for (int i = 0; i < pToken.size(); i++) {
         // If the token is not in the map
